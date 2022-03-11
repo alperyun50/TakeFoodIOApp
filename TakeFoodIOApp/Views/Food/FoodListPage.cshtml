@@ -1,0 +1,39 @@
+﻿@using TakeFoodIOApp.Data.Models;
+@model List<Food>
+
+@{
+    ViewData["Title"] = "FoodListPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Food List</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Food Name</th>
+        <th>Price(Kg/$)</th>
+        <th>Stock(Kg)</th>
+        <th>Category Name</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>Details</th>
+    </tr>
+
+    @foreach (var f in Model)
+    {
+        <tr>
+            <td>@f.FoodId</td>
+            <td>@f.Name</td>
+            <th>@f.Price</th>
+            <th>@f.Stock</th>
+            <td>@f.Category.CategoryName</td>
+            <td><a href="#" class="btn btn-danger">Delete</a></td>
+            <td><a href="#" class="btn btn-warning">Update</a></td>
+            <td><a href="#" class="btn btn-info">Details</a></td>
+        </tr>
+    }
+</table>
+
+<a href="#" class="btn btn-primary">New Food</a>

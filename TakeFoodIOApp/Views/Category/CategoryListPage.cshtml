@@ -1,0 +1,33 @@
+﻿@using TakeFoodIOApp.Data.Models;
+@model List<Category>
+
+@{
+    ViewData["Title"] = "CategoryListPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h2>Category List</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Category Name</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.CategoryId</td>
+            <td>@c.CategoryName</td>
+            <td><a href="#" class="btn btn-danger">Delete</a></td>
+            <td><a href="#" class="btn btn-warning">Update</a></td>
+            
+        </tr>
+    }
+</table>
+
+<a href="#" class="btn btn-primary">New Category</a>
