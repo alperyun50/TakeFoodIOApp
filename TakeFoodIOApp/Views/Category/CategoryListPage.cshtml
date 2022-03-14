@@ -14,6 +14,7 @@
     <tr>
         <th>ID</th>
         <th>Category Name</th>
+        <th>Status</th>
         <th>Delete</th>
         <th>Update</th>
     </tr>
@@ -23,6 +24,7 @@
         <tr>
             <td>@c.CategoryId</td>
             <td>@c.CategoryName</td>
+            <td>@c.Status</td>
             <td><a href="#" class="btn btn-danger">Delete</a></td>
             <td><a href="#" class="btn btn-warning">Update</a></td>
             
@@ -30,4 +32,4 @@
     }
 </table>
 
-<a href="#" class="btn btn-primary">New Category</a>
+<a href="/Category/CategoryAdd/" class="btn btn-primary">New Category</a>
