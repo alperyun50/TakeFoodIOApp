@@ -25,11 +25,12 @@
             <td>@c.CategoryId</td>
             <td>@c.CategoryName</td>
             <td>@c.Status</td>
-            <td><a href="#" class="btn btn-danger">Delete</a></td>
-            <td><a href="#" class="btn btn-warning">Update</a></td>
+            <td><a href="/Category/CategoryDelete/@c.CategoryId" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Category/CategoryGet/@c.CategoryId" class="btn btn-warning">Update</a></td>
             
         </tr>
     }
 </table>
 
 <a href="/Category/CategoryAdd/" class="btn btn-primary">New Category</a>
+ 

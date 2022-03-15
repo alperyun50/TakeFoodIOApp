@@ -34,9 +34,9 @@ namespace TakeFoodIOApp.Repositories
             c.SaveChanges();
         }
 
-        public void TGet(int id)
+        public T TGet(int id)
         {
-            c.Set<T>().Find(id);
+           return c.Set<T>().Find(id);
         }
 
         // Include method added for relational database

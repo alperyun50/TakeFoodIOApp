@@ -1,5 +1,9 @@
-﻿@using TakeFoodIOApp.Data.Models;
-@model List<Food>
+﻿
+@using TakeFoodIOApp.Data.Models;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model IPagedList<Food>
 
 @{
     ViewData["Title"] = "FoodListPage";
@@ -30,10 +34,16 @@
             <th>@f.Stock</th>
             <td>@f.Category.CategoryName</td>
             <td><a href="/Food/DeleteFood/@f.FoodId" class="btn btn-danger">Delete</a></td>
-            <td><a href="#" class="btn btn-warning">Update</a></td>
+            <td><a href="/Food/FoodGet/@f.FoodId" class="btn btn-warning">Update</a></td>
             <td><a href="#" class="btn btn-info">Details</a></td>
         </tr>
     }
 </table>
+
+@*added for pagination*@
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("FoodListPage", new { page }), new PagedListRenderOptionsBase 
+                                                                            { LiElementClasses = new string[] { "page-item" },
+                                                                              PageClasses = new string[] { "page-link" },
+                                                                              Display = PagedListDisplayMode.IfNeeded }))
 
 <a href="/Food/AddFood/" class="btn btn-primary">New Food</a>

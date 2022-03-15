@@ -21,7 +21,6 @@ namespace TakeFoodIOApp.Controllers
         public IActionResult CategoryAdd()
         {
 
-
             return View();
         }
 
@@ -37,7 +36,45 @@ namespace TakeFoodIOApp.Controllers
 
             return RedirectToAction("CategoryListPage");
 
+        }
 
+        [HttpGet]
+        public IActionResult CategoryGet(int id)
+        {
+            var x = categoryRepository.TGet(id);
+
+            Category ct = new Category()
+            {
+                CategoryName = x.CategoryName,
+                CategoryDescription = x.CategoryDescription,
+                CategoryId = x.CategoryId
+            };
+
+            return View(ct);
+        }
+
+        [HttpPost]
+        public IActionResult CategoryUpdate(Category p)
+        {
+            var x = categoryRepository.TGet(p.CategoryId);
+
+            x.CategoryName = p.CategoryName;
+            x.CategoryDescription = p.CategoryDescription;
+            x.Status = true;
+
+            categoryRepository.TUpdate(x);
+
+            return RedirectToAction("CategoryListPage");
+        }
+
+        public IActionResult CategoryDelete(int id)
+        {
+            var x = categoryRepository.TGet(id);
+            x.Status = false;
+
+            categoryRepository.TUpdate(x);
+
+            return RedirectToAction("CategoryListPage");
         }
     }
 }
