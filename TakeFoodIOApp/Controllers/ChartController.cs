@@ -122,6 +122,20 @@ namespace TakeFoodIOApp.Controllers
             var value9 = c.Foods.Average(x => x.Price).ToString("0.000");
             ViewBag.foodpriceavg = value9;
 
+            // total fruit stock
+            var value10 = c.Categories.Where(x => x.CategoryName == "Fruit").Select(y => y.CategoryId).FirstOrDefault();
+            var sum = c.Foods.Where(y => y.CategoryId == value10).Sum(x => x.Stock);
+            ViewBag.totalfruitstock = sum;
+
+            // total vegetable stock
+            var value11 = c.Categories.Where(x => x.CategoryName == "Vegetables").Select(y => y.CategoryId).FirstOrDefault();
+            var sum2 = c.Foods.Where(x => x.CategoryId == value11).Sum(y => y.Stock);
+            ViewBag.totalvegetablestock = sum2;
+
+            // Max Food Price (returns the top value)
+            var value12 = c.Foods.OrderByDescending(x => x.Price).Select(y => y.Name).FirstOrDefault();
+            ViewBag.MaxFoodPrice = value12;
+
             return View();
         }
     }
